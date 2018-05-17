@@ -1,1 +1,1 @@
-# portfolio
+Static Site Generator Python Script
