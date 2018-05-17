@@ -1,4 +1,4 @@
-# Important Notes || Design Patterns | Industry Standards
+# Important Notes || Design Patterns || Industry Standards
 ---
 ## Git
 + Make a new branch for each feature you work on
