@@ -38,8 +38,9 @@ content = [ {
     },
 ]
 def make_posts():
-    # Posts should be .md files in the content/blog/ folder.
-    # When run, this script will publish a new post with a blog template.
+    # Currently under construction - does nothing yet
+    # Will eventually scan for .md files in the content/blog/ folder.
+    # When run, should create a new post using the blog template.
     base_file = open('templates/blog.html').read()
     for r, d, f in os.walk('content/blog/'):
         for file in f:
@@ -47,6 +48,7 @@ def make_posts():
             mtime = os.path.getmtime(file)
             ## Replace {{date}} with last modified time
             last_modified_date = datetime.fromtimestamp(mtime)
+            ## Replace {{content}} with file contents
 
 def make_pages(pages, base_file):
     for page in pages:
@@ -54,7 +56,7 @@ def make_pages(pages, base_file):
         print("Making " + page['title'])
         outfile = base_file.replace('{{title}}', page['title'])
         outfile = outfile.replace('{{content}}', content_file)
-        outfile = outfile.replace(page['title']+'class','active')
+        outfile = outfile.replace(page['title']+'class','active') # Adds 'active' class to the correct navbar link
         open('docs/'+page['filename'].replace('content/',''), 'w').write(outfile)
     print("Succesfully added files to docs/")
 
