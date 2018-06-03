@@ -4,41 +4,62 @@ import glob
 import markdown
 from datetime import datetime
 from jinja2 import Template
-md = markdown.Markdown(extensions=["markdown.extensions.meta"])
+posts = []
 content = []
 def update_content():
-    import glob
-    all_html_files = glob.glob("content/*.html")
-    print(all_html_files)
-    for file in all_html_files:
-        print(file)
+    content_files = glob.glob("content/*.md")
+    base_template = Template(open('templates/base.html').read())
+    for file in content_files:
+        md = markdown.Markdown(extensions = ['markdown.extensions.meta'])
         page = {}
         html = md.convert(open(file).read())
+
         page['filename'] = os.path.basename(file)
         page['title'] = md.Meta["title"][0]
+        page['md'] = markdown.markdownFromFile(input=file,encoding="UTF-8")
         #author = md.Meta["author"][0]
         content.append(page)
     print(content)
-    for r, d, f in os.walk('content/'):
-        pass
 
 def update_blog():
-    base_file = open('templates/blog.html').read()
-    blog_template = Template(base_file)
+    post_template = Template(open('templates/post.html').read())
+    blog_template = Template(open('templates/blog.html').read())
+    base_template = Template(open('templates/base.html').read())
+    rendered_posts = []
     for r, d, f in os.walk('posts/'):
         for file in f:
-            print("Found blog post at ", f)
+            md = markdown.Markdown(extensions=["markdown.extensions.meta"])
+            print("Found post at ", f)
             html = md.convert(open('posts/'+file).read())
-
             mtime = os.path.getmtime('posts/'+file)
-            ## Replace {{date}} with last modified time
             last_modified_date = datetime.fromtimestamp(mtime)
-            blog_post_template = Template('''
-                # {{ title }}
-            ''')
-            ## Replace {{content}} with file contents
+
+            result = post_template.render(
+                title = md.Meta["title"][0],
+                author = md.Meta["author"][0],
+                date = last_modified_date,
+                content = markdown.markdownFromFile(input='posts/'+file,encoding="UTF-8")
+            )
+            post = {
+                'title': md.Meta["title"][0],
+                'author': md.Meta["author"][0],
+                'date': last_modified_date,
+                'content': markdown.markdownFromFile(input='posts/'+file,encoding="UTF-8")
+            }
+            rendered_posts.append(result)
+            posts.append(post)
+    blog_content = blog_template.render(
+        rendered_posts = rendered_posts,
+        posts = posts
+    )
+    blog = base_template.render(
+        content = blog_content,
+        title = "Blog"
+    )
+    open('docs/blog.html', 'w+').write(blog)
 
 def make_pages(pages, base_file):
+    base_template = Template(base_file)
     for page in pages:
         content_file = open(page['filename']).read()
         print("Making " + page['title'])
