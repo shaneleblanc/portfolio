@@ -1,53 +1,41 @@
 import os
 import fileinput
-content = [ {
-        'filename': 'content/index.html',
-        'title': 'Home'
-    },
-    {
-        'filename': 'content/about.html',
-        'title': 'About',
-    },
-    {
-        'filename': 'content/blog.html',
-        'title': 'Blog',
-    },
-    {
-        'filename': 'content/contact.html',
-        'title': 'Contact',
-    },
-    {
-        'filename': 'content/services.html',
-        'title': 'Services',
-    },
-    {
-        'filename': 'content/audio.html',
-        'title': 'Audio',
-    },
-    {
-        'filename': 'content/music.html',
-        'title': 'Music',
-    },
-    {
-        'filename': 'content/software.html',
-        'title': 'Software',
-    },
-    {
-        'filename': 'content/hardware.html',
-        'title': 'Hardware',
-    },
-]
-def make_posts():
-    # Currently under construction - does nothing yet
-    # Will eventually scan for .md files in the content/blog/ folder.
-    # When run, should create a new post using the blog template.
+import glob
+import markdown
+from datetime import datetime
+from jinja2 import Template
+md = markdown.Markdown(extensions=["markdown.extensions.meta"])
+content = []
+def update_content():
+    import glob
+    all_html_files = glob.glob("content/*.html")
+    print(all_html_files)
+    for file in all_html_files:
+        print(file)
+        page = {}
+        html = md.convert(open(file).read())
+        page['filename'] = os.path.basename(file)
+        page['title'] = md.Meta["title"][0]
+        #author = md.Meta["author"][0]
+        content.append(page)
+    print(content)
+    for r, d, f in os.walk('content/'):
+        pass
+
+def update_blog():
     base_file = open('templates/blog.html').read()
-    for r, d, f in os.walk('content/blog/'):
+    blog_template = Template(base_file)
+    for r, d, f in os.walk('posts/'):
         for file in f:
-            print("Found blog post at " + f)
-            mtime = os.path.getmtime(file)
+            print("Found blog post at ", f)
+            html = md.convert(open('posts/'+file).read())
+
+            mtime = os.path.getmtime('posts/'+file)
             ## Replace {{date}} with last modified time
             last_modified_date = datetime.fromtimestamp(mtime)
+            blog_post_template = Template('''
+                # {{ title }}
+            ''')
             ## Replace {{content}} with file contents
 
 def make_pages(pages, base_file):
@@ -61,7 +49,9 @@ def make_pages(pages, base_file):
     print("Succesfully added files to docs/")
 
 def main():
-    make_pages(content, open('templates/base.html').read())
+    update_content()
+    update_blog()
+    #make_pages(content, open('templates/base.html').read())
 
 
 

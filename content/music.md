@@ -1,0 +1,7 @@
+title: Music
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+<p>Music placeholder</p>
+        </div>
+      </div>

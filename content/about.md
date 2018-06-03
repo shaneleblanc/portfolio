@@ -1,0 +1,9 @@
+title: About
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+<p>Hi, I'm Shane. This site is meant to showcase my experience with various projects. More info coming soon.</p>
+<!-- TODO: Add web resume, add profile links, pluralsight & upwork score tests? -->
+
+        </div>
+      </div>

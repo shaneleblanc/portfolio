@@ -1,0 +1,8 @@
+title: Services
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+<p>Things I'll do for money</p>
+<p>Find me on Upwork</p>
+        </div>
+      </div>
