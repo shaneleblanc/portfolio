@@ -1,7 +1,4 @@
 title: Contact
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-<p>Contact form will go here. For now, <a href="mailto:shane@xs.vc">email me</a>. </p>
-        </div>
-      </div>
+
+
+Contact form will go here. For now, <a href="mailto:shane@xs.vc">email me</a>.

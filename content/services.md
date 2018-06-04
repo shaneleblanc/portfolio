@@ -1,8 +1,7 @@
 title: Services
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-<p>Things I'll do for money</p>
-<p>Find me on Upwork</p>
-        </div>
-      </div>
+
+
+Things I'll do for money
+========================
+
+[Find me on Upwork](https://www.upwork.com/freelancers/~01b8317e9a9cad22c4)
