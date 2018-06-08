@@ -1,4 +1,24 @@
-
+body {
+  background-image: url("img/bg-04.png");
+  background-color: #000000;
+  font-family: 'Tajawal', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+h1 {
+  font-family: 'Tajawal';
+}
+.col-lg-8 {
+  background-color: #FFFFFF;
+}
+.navbar-brand {
+  background: linear-gradient(330deg, #e05252 0%, #0094ff 25%, #52e0e0 50%, #9952e0 75%, #d23dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 a {
   color: #9161ea;
   text-decoration: none;

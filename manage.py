@@ -1,5 +1,6 @@
 import os
 import sys
+import io
 import fileinput
 import glob
 import markdown
@@ -8,6 +9,7 @@ from jinja2 import Template
 posts = []
 content = []
 navbar_links = []
+navbar_projects = []
 post_template = Template(open('templates/post.html').read())
 blog_template = Template(open('templates/blog.html').read())
 base_template = Template(open('templates/base.html').read())
@@ -21,8 +23,7 @@ def scan_pages():
         html = md.convert(open(file).read())
         page['filename'] = os.path.basename(file).replace('content/','').replace('.md','.html')
         page['title'] = md.Meta["title"][0]
-        page['md'] = markdown.markdownFromFile(input=file,encoding="UTF-8")
-        #author = md.Meta["author"][0]
+        page['md'] = html
         content.append(page)
 
 def update_content():
@@ -31,27 +32,32 @@ def update_content():
     for file in content_files:
         #print("Making"+os.path.basename(file).replace('content/','').replace('.md','.html'))
         md = markdown.Markdown(extensions = ['markdown.extensions.meta'])
+        file_name = os.path.basename(file).replace('content/','').replace('.md','.html')
         html = md.convert(open(file).read())
         result = base_template.render(
             title = md.Meta["title"][0],
-            filename = os.path.basename(file).replace('content/','').replace('.md','.html'),
             content = html,
-            links = navbar_links
+            links = navbar_links,
+            filename = file_name
         )
         outfile = result.replace(md.Meta["title"][0]+'class','active') # Adds 'active' class to the correct navbar link
-        open('docs/'+os.path.basename(file).replace('content/','').replace('.md','.html'), 'w').write(outfile)
+        open('docs/'+file_name, 'w').write(outfile)
 
 def update_navbar():
     print("Updating navbar...")
+    navbar_links.append(['Blog', 'blog.html'])
     for page in content:
-        navbar_links.append(f'''<li class="nav-item"> <a class="nav-link {page['title']}class" href="{page['filename']}"> {page['title']}</a></li>''')
+        # # TODO: put the HTML on jinja side, then allow sorting by alphabetical
+        navbar_links.append([page['title'], page['filename']])
+        #f'''<li class="nav-item"> <a class="nav-link {page['title']}class" href="{page['filename']}"> {page['title']}</a></li>'''
+    navbar_links.remove(['Home', 'index.html'])
     print(navbar_links)
 
 def update_blog():
     print("Updating blog...")
     rendered_posts = []
-    for r, d, f in os.walk('posts/'):
-        for file in f:
+    for root, dirs, files in os.walk('posts/'):
+        for file in files:
             md = markdown.Markdown(extensions=["markdown.extensions.meta"])
             html = md.convert(open('posts/'+file).read())
             mtime = os.path.getmtime('posts/'+file)
@@ -67,17 +73,20 @@ def update_blog():
                 'title': md.Meta["title"][0],
                 'author': md.Meta["author"][0],
                 'date': last_modified_date,
-                'content': markdown.markdownFromFile(input='posts/'+file,encoding="UTF-8")
+                'content': html
             }
             rendered_posts.append(result)
             posts.append(post)
+    # Put POSTS into Blog page template
     blog_content = blog_template.render(
         rendered_posts = rendered_posts,
         posts = posts
     )
+    # Put Blog page into Base site template
     blog = base_template.render(
         content = blog_content,
-        title = "Blog"
+        title = "Blog",
+        links = navbar_links
     )
     blog = blog.replace('Blogclass','active') # Adds 'active' class to the correct navbar link
     open('docs/blog.html', 'w+').write(blog)
@@ -95,13 +104,15 @@ def new_post():
 '''
         open('content/'+name+'.md', 'w+').write(new_page)
         print('Succesfully written to content/'+name+'.md')
+        update_content()
     elif action == 'post':
         name = str(input("Great! What should the post be called? "))
         author = str(input("Who is the author of this post? ")) or "Shane LeBlanc"
         content = str(input("Enter optional content: ")) or "Content goes here!"
         new_post = f"title: {name}\nauthor: {author}\n\n## A Heading\n\n{content}"
-        open('posts/post_'+datetime.now().strftime("%m-%d-%y_%H-%M")+'.md', 'w+').write(new_post)
-        print('Succesfully written to posts/post_'+datetime.now().strftime("%m-%d-%y_%H-%M")+'.md')
+        date_now = datetime.now().strftime("%m-%d-%y_%H-%M")
+        open('posts/post_'+date_now+'.md', 'w+').write(new_post)
+        print('Succesfully written to posts/post_'+date_now+'.md')
         update_blog()
     else:
         print("Try a valid input!")
@@ -118,6 +129,7 @@ def main():
         update_navbar()
         update_content()
         update_blog()
+        exit()
     elif action == 'new':
         new_post()
     else:
