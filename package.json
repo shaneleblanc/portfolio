@@ -1,0 +1,30 @@
+{
+  "name": "portfolio",
+  "version": "0.3.5",
+  "description": "ShaneLeBlanc.net Portfolio Web site",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "animejs": "^2.2.0",
+    "bulma": "^0.7.1",
+    "nuxt": "^1.4.0",
+    "nuxt-buefy": "^0.0.4",
+    "bootstrap": "^4.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaneleblanc/portfolio.git"
+  },
+  "author": "Shane LeBlanc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaneleblanc/portfolio/issues"
+  },
+  "homepage": "https://github.com/shaneleblanc/portfolio#readme"
+}

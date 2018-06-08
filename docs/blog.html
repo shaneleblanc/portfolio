@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>ShaneLeBlanc.net</title>
+        <title>ShaneLeBlanc.net | Blog</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -11,9 +11,11 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/main.css">
         <style>
             body {
               background-image: url("img/bg-04.png");
+              background-color: #000000;
               font-family: 'Tajawal', sans-serif;
               font-family: 'Raleway', sans-serif;
               font-family: 'Source Sans Pro', sans-serif;
@@ -23,11 +25,17 @@
             h1 {
               font-family: 'Tajawal';
             }
+            .col-lg-8 {
+              background-color: #FFFFFF;
+            }
             .navbar-brand {
               background: linear-gradient(330deg, #e05252 0%, #0094ff 25%, #52e0e0 50%, #9952e0 75%, #d23dff 100%);
               -webkit-background-clip: text;
               background-clip: text;
               -webkit-text-fill-color: transparent;
+            }
+            .nav-link {
+              color: #FF0000;
             }
         </style>
         <link href="https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro|Tajawal" rel="stylesheet">
@@ -38,14 +46,16 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-         <a class="navbar-brand" href="#">Shane LeBlanc.net</a>
+        <div class="container px-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <a class="navbar-brand" href="index.html">Shane LeBlanc.net</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
 
          <div class="collapse navbar-collapse" id="navbarsExample03">
            <ul class="navbar-nav mr-auto">
+            <!-- Projects dropdown
              <li class="nav-item dropdown active">
                <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects</a>
                <div class="dropdown-menu" aria-labelledby="dropdown03">
@@ -54,19 +64,22 @@
                  <a class="dropdown-item Musicclass" href="music.html">Music</a>
                  <a class="dropdown-item Audioclass" href="audio.html">Audio</a>
                </div>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link Servicesclass" href="services.html">Services</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link active" href="blog.html">Blog</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link Aboutclass" href="about.html">About</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link Contactclass" href="contact.html">Contact</a>
-             </li>
+             </li> -->
+             
+               <li class="nav-item"> <a class="nav-link active" href="blog.html">Blog</a></li>
+             
+               <li class="nav-item"> <a class="nav-link Servicesclass" href="services.html">Services</a></li>
+             
+               <li class="nav-item"> <a class="nav-link Musicclass" href="music.html">Music</a></li>
+             
+               <li class="nav-item"> <a class="nav-link Aboutclass" href="about.html">About</a></li>
+             
+               <li class="nav-item"> <a class="nav-link Contactclass" href="contact.html">Contact</a></li>
+             
+               <li class="nav-item"> <a class="nav-link Resumeclass" href="Resume.html">Resume</a></li>
+             
+               <li class="nav-item"> <a class="nav-link Testpageclass" href="Testpage.html">Testpage</a></li>
+             
            </ul>
 
            <form class="form-inline my-2 my-md-0">
@@ -74,27 +87,29 @@
            </form>
          </div>
        </nav>
+     </div>
+       <div class="container">
+       <div class="row">
+         <div class="col-lg-8">
 <!-- Page Content -->
-<div class="container">
 
-  <div class="row">
-
-    <!-- Post Content Column -->
+    
+           <!-- Post Content Column -->
     <div class="col-lg-8">
 
       <!-- Title -->
-      <h1 class="mt-4">Post Title</h1>
+      <h1 class="mt-4" id="Initial Blog Post">Initial Blog Post</h1>
 
       <!-- Author -->
       <p class="lead">
         by
-        <a href="#">Start Bootstrap</a>
+        <a href="#">Shane LeBlanc</a>
       </p>
 
       <hr>
 
       <!-- Date/Time -->
-      <p>Posted on January 1, 2018 at 12:00 PM</p>
+      <p>Posted on 2018-06-02 23:26:17.350628</p>
 
       <hr>
 
@@ -104,142 +119,136 @@
       <hr>
 
       <!-- Post Content -->
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+      <p class="lead">
+    <h1>This is the first posts</h1>
+<ul>
+<li>Wow</li>
+<li>Hmm</li>
+</ul>
+      <hr>
+    </div>
+    
+           <!-- Post Content Column -->
+    <div class="col-lg-8">
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+      <!-- Title -->
+      <h1 class="mt-4" id="Non-initial Blog Post">Non-initial Blog Post</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-      <blockquote class="blockquote">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in
-          <cite title="Source Title">Source Title</cite>
-        </footer>
-      </blockquote>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="#">Shane LeBlanc</a>
+      </p>
 
       <hr>
 
-      <!-- Comments Form -->
-      <div class="card my-4">
-        <h5 class="card-header">Leave a Comment:</h5>
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
+      <!-- Date/Time -->
+      <p>Posted on 2018-06-03 05:47:33.332804</p>
 
-      <!-- Single Comment -->
-      <div class="media mb-4">
-        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-        <div class="media-body">
-          <h5 class="mt-0">Commenter Name</h5>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-      </div>
+      <hr>
 
-      <!-- Comment with nested comments -->
-      <div class="media mb-4">
-        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-        <div class="media-body">
-          <h5 class="mt-0">Commenter Name</h5>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
 
-          <div class="media mt-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
+      <hr>
 
-          <div class="media mt-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+      <!-- Post Content -->
+      <p class="lead">
+    <h1>LALAla</h1>
+<h1>Another post</h1>
+<ul>
+<li>For the sake of testing</li>
+<li>Hmm</li>
+</ul>
+      <hr>
     </div>
+    
+           <!-- Post Content Column -->
+    <div class="col-lg-8">
 
-    <!-- Sidebar Widgets Column -->
-    <div class="col-md-4">
+      <!-- Title -->
+      <h1 class="mt-4" id="Post created from python script">Post created from python script</h1>
 
-      <!-- Search Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Search</h5>
-        <div class="card-body">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button class="btn btn-secondary" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="#">Shane LeBlanc</a>
+      </p>
 
-      <!-- Categories Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Categories</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Web Design</a>
-                </li>
-                <li>
-                  <a href="#">HTML</a>
-                </li>
-                <li>
-                  <a href="#">Freebies</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-                <li>
-                  <a href="#">CSS</a>
-                </li>
-                <li>
-                  <a href="#">Tutorials</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <hr>
 
+      <!-- Date/Time -->
+      <p>Posted on 2018-06-03 19:14:57.792618</p>
+
+      <hr>
+
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead">
+    <h1>Post created from python script page</h1>
+<p>This post was created by manage.py <code>new_post()</code>!</p>
+      <hr>
+    </div>
+    
+           <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+      <h1 class="mt-4" id="Testing auto-update after blog post">Testing auto-update after blog post</h1>
+
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="#">Shane LeBlanc</a>
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <p>Posted on 2018-06-03 19:17:33.859594</p>
+
+      <hr>
+
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead">
+    <h1>Testing auto-update after blog post page</h1>
+<p>Content goes here!</p>
+      <hr>
+    </div>
+    
       <!-- Side Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Side Widget</h5>
-        <div class="card-body">
-          You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+</div>
+      <div class="col-xs-6 col-md-4" style="top: 0px;">
+        <div class="card my-4">
+          <h5 class="card-header">Blog Posts</h5>
+          <div class="card-body">
+            
+            <li><a href="#Initial%20Blog%20Post">Initial Blog Post</a></li>
+            
+            <li><a href="#Non-initial%20Blog%20Post">Non-initial Blog Post</a></li>
+            
+            <li><a href="#Post%20created%20from%20python%20script">Post created from python script</a></li>
+            
+            <li><a href="#Testing%20auto-update%20after%20blog%20post">Testing auto-update after blog post</a></li>
+            
+          </div>
         </div>
-      </div>
 
-    </div>
-
-  </div>
-  <!-- /.row -->
 
 </div>
-<!-- /.container -->
+</div>
 
+</div>
+</div>
 <hr>
 
 <footer>
